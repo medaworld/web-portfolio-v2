@@ -1,0 +1,326 @@
+import { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+
+interface IShape {
+  x: number;
+  y: number;
+  translateX: number;
+  translateY: number;
+  size: number;
+  alpha: number;
+  targetAlpha: number;
+  dx: number;
+  dy: number;
+  magnetism: number;
+  shapeForm: string;
+  colorStyle: string;
+}
+
+interface ICanvasSize {
+  w: number;
+  h: number;
+}
+
+interface IMouse {
+  x: number;
+  y: number;
+}
+
+interface ISettings {
+  quantity: number;
+  staticity: number;
+  ease: number;
+}
+
+class BlurAnimation {
+  private canvas: HTMLCanvasElement | null;
+  private canvasContainer: HTMLElement | null;
+  private context: CanvasRenderingContext2D | null;
+  private dpr: number;
+  private settings: ISettings;
+  private shapes: IShape[];
+  private mouse: IMouse;
+  private canvasSize: ICanvasSize;
+  public initCanvasBound: (event: UIEvent) => void;
+  public onMouseMoveBound: (event: MouseEvent) => void;
+
+  constructor(
+    el: HTMLCanvasElement | null,
+    { quantity = 7, staticity = 10, ease = 10 }: ISettings = {} as ISettings
+  ) {
+    this.canvas = el;
+    this.canvasContainer = this.canvas?.parentElement || null;
+    this.context = this.canvas?.getContext('2d') || null;
+    this.dpr = window.devicePixelRatio || 1;
+    this.settings = {
+      quantity,
+      staticity,
+      ease,
+    };
+    this.shapes = [];
+    this.mouse = {
+      x: 0,
+      y: 0,
+    };
+    this.canvasSize = {
+      w: 0,
+      h: 0,
+    };
+    this.initCanvasBound = this.initCanvas.bind(this);
+    this.onMouseMoveBound = this.onMouseMove.bind(this);
+
+    if (this.canvas && this.context && this.canvasContainer) {
+      this.init();
+    }
+  }
+
+  private init() {
+    this.initCanvas();
+    this.animate();
+    window.addEventListener('resize', () => this.initCanvas());
+    window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    window.addEventListener('resize', this.initCanvasBound);
+    window.addEventListener('mousemove', this.onMouseMoveBound);
+  }
+
+  private initCanvas() {
+    this.resizeCanvas();
+    this.drawParticles();
+  }
+
+  private onMouseMove(event: MouseEvent) {
+    const { clientX, clientY } = event;
+    if (this.canvas) {
+      const rect = this.canvas.getBoundingClientRect();
+      const { w, h } = this.canvasSize;
+      const x = clientX - rect.left - w / 2;
+      const y = clientY - rect.top - h / 2;
+      const inside = x < w / 2 && x > -(w / 2) && y < h / 2 && y > -(h / 2);
+      if (inside) {
+        this.mouse.x = x;
+        this.mouse.y = y;
+      }
+    }
+  }
+
+  private resizeCanvas() {
+    this.shapes.length = 0;
+    this.canvasSize.w = this.canvasContainer?.offsetWidth || 0;
+    this.canvasSize.h = this.canvasContainer?.offsetHeight || 0;
+    if (this.canvas) {
+      this.canvas.width = this.canvasSize.w * this.dpr;
+      this.canvas.height = this.canvasSize.h * this.dpr;
+      this.canvas.style.width = this.canvasSize.w + 'px';
+      this.canvas.style.height = this.canvasSize.h + 'px';
+      if (this.context) {
+        this.context.scale(this.dpr, this.dpr);
+      }
+    }
+  }
+
+  private shapeParams(): IShape {
+    const x = Math.floor(Math.random() * this.canvasSize.w);
+    const y = Math.floor(Math.random() * this.canvasSize.h);
+    const translateX = 0;
+    const translateY = 0;
+    const size = Math.floor(Math.random() * 300) + 10;
+    const alpha = 0;
+    const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+    const dx = (Math.random() - 0.5) * 0.2;
+    const dy = (Math.random() - 0.5) * 0.2;
+    const magnetism = 0.1 + Math.random() * 4;
+    const shapeForm = Math.random() < 0.6 ? 'rectangle' : 'oval';
+    const colorStyle = Math.random() < 0.65 ? 'blue' : 'pink';
+
+    return {
+      x,
+      y,
+      translateX,
+      translateY,
+      size,
+      alpha,
+      targetAlpha,
+      dx,
+      dy,
+      magnetism,
+      shapeForm,
+      colorStyle,
+    };
+  }
+
+  private drawShape(shape: IShape, update = false) {
+    if (!this.context) return;
+
+    const { x, y, translateX, translateY, size, shapeForm, colorStyle } = shape;
+    let gradient;
+    if (shapeForm === 'oval') {
+      gradient = this.context.createRadialGradient(x, y, 0, x, y, size);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    } else {
+      gradient = this.context.createConicGradient(Math.PI, x, y);
+      if (colorStyle === 'pink') {
+        gradient.addColorStop(0, '#ff69b433');
+        gradient.addColorStop(55 / 360, '#ff149333');
+        gradient.addColorStop(120 / 360, '#b6e1ff33');
+        gradient.addColorStop(160 / 360, '#ff69b433');
+      } else {
+        gradient.addColorStop(0, '#16abff33');
+        gradient.addColorStop(55 / 360, '#0885ff33');
+        gradient.addColorStop(120 / 360, '#54d6ff33');
+        gradient.addColorStop(160 / 360, '#0071ff33');
+      }
+      gradient.addColorStop(1, 'transparent');
+    }
+    this.context.translate(translateX, translateY);
+    this.context.beginPath();
+    switch (shapeForm) {
+      case 'oval':
+        this.context.ellipse(x, y, size, size * 0.6, 0, 0, 2 * Math.PI);
+        break;
+      case 'rectangle':
+        this.context.rect(x - size, y - size / 2, size * 2, size);
+        break;
+    }
+    this.context.fillStyle = gradient;
+    this.context.fill();
+    this.context.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    if (!update) {
+      this.shapes.push(shape);
+    }
+  }
+
+  private clearContext() {
+    this.context?.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
+  }
+
+  private drawParticles() {
+    this.clearContext();
+    const particleCount = this.settings.quantity;
+    for (let i = 0; i < particleCount; i++) {
+      const shape = this.shapeParams();
+      this.drawShape(shape);
+    }
+  }
+
+  private remapValue(
+    value: number,
+    start1: number,
+    end1: number,
+    start2: number,
+    end2: number
+  ): number {
+    const remapped =
+      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
+    return remapped > 0 ? remapped : 0;
+  }
+
+  private animate() {
+    this.clearContext();
+    this.shapes.forEach((shape, i) => {
+      const edge = [
+        shape.x + shape.translateX - shape.size,
+        this.canvasSize.w - shape.x - shape.translateX - shape.size,
+        shape.y + shape.translateY - shape.size,
+        this.canvasSize.h - shape.y - shape.translateY - shape.size,
+      ];
+      const closestEdge = edge.reduce((a, b) => Math.min(a, b));
+      const remapClosestEdgeStr = this.remapValue(
+        closestEdge,
+        0,
+        20,
+        0,
+        1
+      ).toFixed(2);
+      const remapClosestEdge = Number(remapClosestEdgeStr);
+      if (remapClosestEdge > 1) {
+        shape.alpha += 0.02;
+        if (shape.alpha > shape.targetAlpha) shape.alpha = shape.targetAlpha;
+      } else {
+        shape.alpha = shape.targetAlpha * Number(remapClosestEdge);
+      }
+      shape.x += shape.dx;
+      shape.y += shape.dy;
+      shape.translateX +=
+        (this.mouse.x / (this.settings.staticity / shape.magnetism) -
+          shape.translateX) /
+        this.settings.ease;
+      shape.translateY +=
+        (this.mouse.y / (this.settings.staticity / shape.magnetism) -
+          shape.translateY) /
+        this.settings.ease;
+      if (
+        shape.x < -shape.size ||
+        shape.x > this.canvasSize.w + shape.size ||
+        shape.y < -shape.size ||
+        shape.y > this.canvasSize.h + shape.size
+      ) {
+        this.shapes.splice(i, 1);
+        const newshape = this.shapeParams();
+        this.drawShape(newshape);
+      } else {
+        this.drawShape(shape, true);
+      }
+    });
+    requestAnimationFrame(() => this.animate());
+  }
+
+  public destroy() {
+    window.removeEventListener('resize', this.initCanvasBound);
+    window.removeEventListener('mousemove', this.onMouseMoveBound);
+  }
+}
+
+document
+  .querySelectorAll<HTMLCanvasElement>('[data-particle-animation]')
+  .forEach((canvas) => {
+    const options: ISettings = {
+      quantity: Number(canvas.dataset.particleQuantity),
+      staticity: Number(canvas.dataset.particleStaticity),
+      ease: Number(canvas.dataset.particleEase),
+    };
+    new BlurAnimation(canvas, options);
+  });
+
+const RelativeContainer = styled.div`
+  position: relative;
+`;
+
+const Main = styled.main`
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const CanvasContainer = styled.div`
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  canvas {
+    filter: blur(40px);
+  }
+`;
+
+export default function BlurAnimationCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const instance = new BlurAnimation(canvasRef.current);
+    return () => {
+      instance.destroy && instance.destroy();
+    };
+  }, []);
+
+  return (
+    <RelativeContainer>
+      <Main>
+        <CanvasContainer>
+          <canvas ref={canvasRef} data-particle-animation></canvas>
+        </CanvasContainer>
+      </Main>
+    </RelativeContainer>
+  );
+}

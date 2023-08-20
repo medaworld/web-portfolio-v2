@@ -77,6 +77,7 @@ export const SocialWrapper = styled.div<{ isOpen: boolean }>`
   align-items: center;
   margin-left: 10px;
   font-weight: 200;
+  gap: 1rem;
 
   @media (max-width: 768px) {
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
