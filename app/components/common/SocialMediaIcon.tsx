@@ -5,7 +5,7 @@ import {
   FaLinkedin,
   FaGithub,
 } from 'react-icons/fa';
-import { styled, useTheme } from 'styled-components';
+import { styled } from 'styled-components';
 
 const SocialLink = styled.a`
   cursor: pointer;
@@ -35,7 +35,6 @@ const SocialMediaIcon = ({
   margin,
   color,
 }: SocialMediaIconProps) => {
-  // const theme = useTheme();
   return (
     <SocialLink
       href={href}

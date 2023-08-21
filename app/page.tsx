@@ -3,7 +3,7 @@
 import { styled } from 'styled-components';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
-import Projects from './components/Projects/Projects';
+import Work from './components/Work/Work';
 
 const MainContainer = styled.main`
   min-height: 100vh;
@@ -22,7 +22,7 @@ export default function Home() {
     <MainContainer>
       <Hero />
       <About />
-      <Projects />
+      <Work />
     </MainContainer>
   );
 }

@@ -282,17 +282,6 @@ class BlurAnimation {
   }
 }
 
-document
-  .querySelectorAll<HTMLCanvasElement>('[data-particle-animation]')
-  .forEach((canvas) => {
-    const options: ISettings = {
-      quantity: Number(canvas.dataset.particleQuantity),
-      staticity: Number(canvas.dataset.particleStaticity),
-      ease: Number(canvas.dataset.particleEase),
-    };
-    new BlurAnimation(canvas, options);
-  });
-
 const CanvasContainer = styled.div`
   position: fixed;
   height: 100vh;
