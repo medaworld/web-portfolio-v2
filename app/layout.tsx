@@ -1,13 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
 import StyledComponentsRegistry from './lib/registry';
 import Layout from './components/Layout/Layout';
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: '300',
-});
+import { roboto } from './fonts';
 
 export const metadata: Metadata = {
   title: 'Web Portfolio',

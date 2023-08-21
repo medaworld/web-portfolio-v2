@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Logo from '../common/Logo';
 import Link from 'next/link';
 import { size } from '@/app/utils/breakpoints';
@@ -6,16 +6,29 @@ import { NavLinkList } from '@/app/utils/dummyData';
 import SocialMediaIcon from '../common/SocialMediaIcon';
 import { useState } from 'react';
 
-const NavBarContainer = styled.nav`
+const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 55px;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom, transparent, rgba(250, 250, 250, 0.2))
+    rgba(214, 219, 220, 0.5);
+  /* box-shadow: 0 10px 30px -10px #ababab46; */
+`;
+
+const NavBarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem;
-  z-index: 5;
+  align-items: center;
+  width: 100%;
+  height: 55px;
 `;
 
 export const Links = styled.div`
@@ -128,36 +141,38 @@ export default function Navbar() {
   }
 
   return (
-    <NavBarContainer>
-      <Logo src="/images/logo.png" size={30} />
-      <Links>
-        <NavLinks isOpen={isMenuOpen}>
-          {NavLinkList.map((navLink, key) => {
-            return (
-              <NavLink key={key}>
-                <Link href={navLink.path}>{navLink.title}</Link>
-              </NavLink>
-            );
-          })}
-        </NavLinks>
-        <HamburgerMenu onClick={toggleMenu}>
-          <HamburgerBar isOpen={isMenuOpen} />
-          <HamburgerBar isOpen={isMenuOpen} />
-          <HamburgerBar isOpen={isMenuOpen} />
-        </HamburgerMenu>
-        <SocialWrapper isOpen={isMenuOpen}>
-          <SocialMediaIcon
-            href={'https://www.linkedin.com/in/briansuruki'}
-            size={20}
-            platform={'linkedin'}
-          />
-          <SocialMediaIcon
-            href={'https://github.com/medaworld'}
-            size={20}
-            platform={'github'}
-          />
-        </SocialWrapper>
-      </Links>
-    </NavBarContainer>
+    <Header>
+      <NavBarContainer>
+        <Logo src="/images/logo.png" size={35} />
+        <Links>
+          <NavLinks isOpen={isMenuOpen}>
+            {NavLinkList.map((navLink, key) => {
+              return (
+                <NavLink key={key}>
+                  <Link href={navLink.path}>{navLink.title}</Link>
+                </NavLink>
+              );
+            })}
+          </NavLinks>
+          <HamburgerMenu onClick={toggleMenu}>
+            <HamburgerBar isOpen={isMenuOpen} />
+            <HamburgerBar isOpen={isMenuOpen} />
+            <HamburgerBar isOpen={isMenuOpen} />
+          </HamburgerMenu>
+          <SocialWrapper isOpen={isMenuOpen}>
+            <SocialMediaIcon
+              href={'https://www.linkedin.com/in/briansuruki'}
+              size={20}
+              platform={'linkedin'}
+            />
+            <SocialMediaIcon
+              href={'https://github.com/medaworld'}
+              size={20}
+              platform={'github'}
+            />
+          </SocialWrapper>
+        </Links>
+      </NavBarContainer>
+    </Header>
   );
 }

@@ -1,44 +1,26 @@
 'use client';
 
-import Image from 'next/image';
-import styles from './page.module.css';
 import { styled } from 'styled-components';
-import BlurAnimationCanvas from './components/Animation/BlurAnimation';
+import Hero from './components/Hero/Hero';
+import About from './components/About/About';
 
 const MainContainer = styled.main`
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  /* padding: 6rem; */
   min-height: 100vh;
-`;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0px auto;
+  padding: 0 150px;
 
-const Center = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-
-  img {
-    position: absolute;
+  @media (max-width: 1080px) {
+    padding: 0px 100px;
   }
 `;
 
 export default function Home() {
   return (
     <MainContainer>
-      <Center>
-        <BlurAnimationCanvas />
-        <Image
-          className={styles.logo}
-          src="/images/logo.png"
-          alt="Logo"
-          width={100}
-          height={100}
-          priority
-        />
-      </Center>
+      <Hero />
+      <About />
     </MainContainer>
   );
 }

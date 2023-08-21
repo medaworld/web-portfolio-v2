@@ -1,5 +1,6 @@
 'use client';
 
+import BlurAnimationCanvas from '../Animation/BlurAnimation';
 import Navbar from './Navbar';
 
 type LayoutProps = {
@@ -8,10 +9,11 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
+    <>
       <Navbar />
+      <BlurAnimationCanvas />
       {children}
-    </div>
+    </>
   );
 };
 

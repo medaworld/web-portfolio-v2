@@ -32,6 +32,11 @@ interface ISettings {
   ease: number;
 }
 
+interface IGradientColors {
+  startColor: string;
+  endColor: string;
+}
+
 class BlurAnimation {
   private canvas: HTMLCanvasElement | null;
   private canvasContainer: HTMLElement | null;
@@ -41,12 +46,17 @@ class BlurAnimation {
   private shapes: IShape[];
   private mouse: IMouse;
   private canvasSize: ICanvasSize;
+  private ovalGradientColors: IGradientColors;
   public initCanvasBound: (event: UIEvent) => void;
   public onMouseMoveBound: (event: MouseEvent) => void;
 
   constructor(
     el: HTMLCanvasElement | null,
-    { quantity = 7, staticity = 10, ease = 10 }: ISettings = {} as ISettings
+    { quantity = 7, staticity = 10, ease = 10 }: ISettings = {} as ISettings,
+    gradientColors: IGradientColors = {
+      startColor: 'rgba(255, 255, 255, 1)',
+      endColor: 'rgba(255, 255, 255, 0)',
+    }
   ) {
     this.canvas = el;
     this.canvasContainer = this.canvas?.parentElement || null;
@@ -66,6 +76,7 @@ class BlurAnimation {
       w: 0,
       h: 0,
     };
+    this.ovalGradientColors = gradientColors;
     this.initCanvasBound = this.initCanvas.bind(this);
     this.onMouseMoveBound = this.onMouseMove.bind(this);
 
@@ -155,8 +166,8 @@ class BlurAnimation {
     let gradient;
     if (shapeForm === 'oval') {
       gradient = this.context.createRadialGradient(x, y, 0, x, y, size);
-      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      gradient.addColorStop(0, this.ovalGradientColors.startColor);
+      gradient.addColorStop(1, this.ovalGradientColors.endColor);
     } else {
       gradient = this.context.createConicGradient(Math.PI, x, y);
       if (colorStyle === 'pink') {
@@ -282,45 +293,38 @@ document
     new BlurAnimation(canvas, options);
   });
 
-const RelativeContainer = styled.div`
-  position: relative;
-`;
-
-const Main = styled.main`
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-`;
-
 const CanvasContainer = styled.div`
-  position: relative;
+  position: fixed;
   height: 100vh;
   width: 100vw;
+  /* background-color: #111827; */
   canvas {
     filter: blur(40px);
   }
 `;
 
+let customGradientColors: any;
+// customGradientColors = {
+//   startColor: 'rgba(0, 0, 0, 1)',
+//   endColor: 'rgba(0, 0, 0, 0)',
+// };
+
 export default function BlurAnimationCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const instance = new BlurAnimation(canvasRef.current);
+    const instance = new BlurAnimation(
+      canvasRef.current,
+      undefined,
+      customGradientColors ? customGradientColors : undefined
+    );
     return () => {
       instance.destroy && instance.destroy();
     };
   }, []);
 
   return (
-    <RelativeContainer>
-      <Main>
-        <CanvasContainer>
-          <canvas ref={canvasRef} data-particle-animation></canvas>
-        </CanvasContainer>
-      </Main>
-    </RelativeContainer>
+    <CanvasContainer>
+      <canvas ref={canvasRef} data-particle-animation></canvas>
+    </CanvasContainer>
   );
 }
