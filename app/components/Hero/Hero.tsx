@@ -1,6 +1,4 @@
 import { styled } from 'styled-components';
-import BlurAnimationCanvas from '../Animation/BlurAnimation';
-import Image from 'next/image';
 import { raleway, robotoSlab } from '../../fonts';
 
 const HeroContainer = styled.section`
@@ -10,22 +8,14 @@ const HeroContainer = styled.section`
   align-items: flex-start;
   min-height: 100vh;
   max-width: 1000px;
-
-  #hero-center {
-    position: absolute;
-  }
-`;
-
-const HeroCenter = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  overflow: hidden;
 `;
 
 const HeroText = styled.div`
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
+  z-index: 1;
 `;
 
 const PreTitle = styled.h1`
@@ -40,7 +30,7 @@ const Name = styled.h2`
 
 const SubTitle = styled.h3`
   color: #555;
-  font-size: clamp(35px, 6vw, 60px);
+  font-size: clamp(35px, 6vw, 40px);
 `;
 
 const MainText = styled.p`
@@ -52,26 +42,18 @@ const MainText = styled.p`
 export default function Hero() {
   return (
     <HeroContainer>
-      <HeroCenter id="hero-center">
-        <Image
-          src="/images/logo.png"
-          alt="Logo"
-          width={70}
-          height={70}
-          priority
-        />
-        <HeroText>
-          <PreTitle className={raleway.className}>Welcome! My name is</PreTitle>
-          <Name className={robotoSlab.className}>Brian Suruki</Name>
-          <SubTitle className={robotoSlab.className}>
-            Full-Stack Developer
-          </SubTitle>
-          <MainText>
-            I am a full-stack developer, specializing in front-end development.
-            I enjoy all aspects of web development.
-          </MainText>
-        </HeroText>
-      </HeroCenter>
+      <HeroText>
+        <PreTitle className={raleway.className}>Welcome! My name is</PreTitle>
+        <Name className={robotoSlab.className}>Brian Suruki</Name>
+        <SubTitle className={robotoSlab.className}>
+          Full-Stack Developer with a Front-End Focus
+        </SubTitle>
+        <MainText>
+          Driven by challenges and fueled by passion, I specialize in creating
+          intuitive and efficient web solutions. Let&apos;s build something
+          great together.
+        </MainText>
+      </HeroText>
     </HeroContainer>
   );
 }
