@@ -7,6 +7,7 @@ export type ProjectProps = {
     live: string | null;
   };
   image: string;
+  overline: string;
   load: boolean;
   login: null | { username: string; password: string; link: string };
 };

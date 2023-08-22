@@ -18,41 +18,42 @@ export default function ProjectItem({ project }: { project: ProjectProps }) {
   return (
     <Project>
       <ProjectContent className="project-content">
-        <div>
-          <ProjectOverline className={raleway.className}>
-            Featured Project
-          </ProjectOverline>
-          <ProjectTitle>
-            <a>{project.title}</a>
-          </ProjectTitle>
-          <ProjectDescription className="project-description">
-            <p>{project.description}</p>
-            {project.login && (
-              <ProjectLogin>
+        <ProjectOverline className={raleway.className}>
+          {project.overline}
+        </ProjectOverline>
+        <ProjectTitle className="project-title">
+          <a href={project.links.live ? project.links.live : '#'}>
+            {project.title}
+          </a>
+        </ProjectTitle>
+        <ProjectDescription className="project-description">
+          <p>{project.description}</p>
+          {project.login && (
+            <ProjectLogin>
+              <p>
+                <strong>Username:</strong> {project.login.username}
+              </p>
+              <p>
+                <strong>Password:</strong> {project.login.password}
+              </p>
+              <a
+                href={project.login.link}
+                aria-label="Login Link"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Login
+              </a>
+              {project.load && (
                 <p>
-                  <strong>Username:</strong> {project.login.username}
+                  <strong>Note:</strong> Please allow a minute for server to
+                  load
                 </p>
-                <p>
-                  <strong>Password:</strong> {project.login.password}
-                </p>
-                <a
-                  href={project.login.link}
-                  aria-label="Login Link"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Login
-                </a>
-                {project.load && (
-                  <p>
-                    <strong>Note:</strong> Please allow a minute for server to
-                    load
-                  </p>
-                )}
-              </ProjectLogin>
-            )}
-          </ProjectDescription>
-        </div>
+              )}
+            </ProjectLogin>
+          )}
+        </ProjectDescription>
+
         <ProjectTechList className={`${raleway.className} project-tech-list`}>
           {project.techStack.map((tech, index) => {
             return <li key={index}>{tech}</li>;

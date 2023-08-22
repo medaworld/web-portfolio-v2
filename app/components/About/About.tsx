@@ -5,7 +5,7 @@ import { SectionContainer, SectionTitle } from '../common/CommonStyles';
 
 export default function About() {
   return (
-    <SectionContainer>
+    <SectionContainer id={'about'}>
       <SectionTitle className={robotoSlab.className}>About</SectionTitle>
       <AboutContent />
       <AboutTechStack />

@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Work from './components/Work/Work';
+import Contact from './components/Contact/Contact';
 
 const MainContainer = styled.main`
   min-height: 100vh;
@@ -23,6 +24,7 @@ export default function Home() {
       <Hero />
       <About />
       <Work />
+      <Contact />
     </MainContainer>
   );
 }

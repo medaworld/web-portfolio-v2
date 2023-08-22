@@ -173,7 +173,7 @@ class BlurAnimation {
       if (colorStyle === 'pink') {
         gradient.addColorStop(0, '#ff69b433');
         gradient.addColorStop(55 / 360, '#ff149333');
-        gradient.addColorStop(120 / 360, '#b6e1ff33');
+        gradient.addColorStop(120 / 360, '#ffb6c133');
         gradient.addColorStop(160 / 360, '#ff69b433');
       } else {
         gradient.addColorStop(0, '#16abff33');

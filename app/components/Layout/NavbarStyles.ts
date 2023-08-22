@@ -59,7 +59,7 @@ export const NavLinks = styled.ul<{ isOpen: boolean }>`
 
 export const NavLink = styled.li`
   margin-right: 15px;
-  font-size: 14px;
+  font-size: 16px;
 
   &:last-child {
     margin-right: 0;

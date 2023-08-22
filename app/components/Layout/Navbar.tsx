@@ -17,6 +17,19 @@ import {
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition;
+
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   function toggleMenu() {
     console.log('test');
   }
@@ -30,7 +43,9 @@ export default function Navbar() {
             {NavLinkList.map((navLink, key) => {
               return (
                 <NavLink key={key}>
-                  <Link href={navLink.path}>{navLink.title}</Link>
+                  <a onClick={() => scrollToSection(navLink.path)}>
+                    {navLink.title}
+                  </a>
                 </NavLink>
               );
             })}

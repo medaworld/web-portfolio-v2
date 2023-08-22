@@ -1,6 +1,7 @@
 'use client';
 
 import BlurAnimationCanvas from '../Animation/BlurAnimation';
+import Footer from './Footer';
 import Navbar from './Navbar';
 
 type LayoutProps = {
@@ -13,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Navbar />
       <BlurAnimationCanvas />
       {children}
+      <Footer />
     </>
   );
 };

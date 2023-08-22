@@ -1,7 +1,7 @@
 export const NavLinkList = [
-  { title: 'About', path: '#about' },
-  { title: 'Work', path: '#work' },
-  { title: 'Contact', path: '#contact' },
+  { title: 'About', path: 'about' },
+  { title: 'Work', path: 'work' },
+  { title: 'Contact', path: 'contact' },
 ];
 
 export const ProjectsListData = [
@@ -21,6 +21,7 @@ export const ProjectsListData = [
       live: 'https://www.blockchain.com/explorer',
     },
     image: '/images/screenshots/blockchainScreenshot.png',
+    overline: 'Work Experience',
     load: false,
     login: null,
   },
@@ -34,6 +35,7 @@ export const ProjectsListData = [
       live: 'https://luminae-ecom.onrender.com/',
     },
     image: '/images/screenshots/luminaeScreenshot.png',
+    overline: 'Project',
     load: true,
     login: {
       username: 'admin@luminae.com',
@@ -51,6 +53,7 @@ export const ProjectsListData = [
       live: 'https://music-profile-site.vercel.app/',
     },
     image: '/images/screenshots/musicProfileScreenshot.png',
+    overline: 'Project',
     load: true,
     login: null,
   },
@@ -64,6 +67,7 @@ export const ProjectsListData = [
       live: 'https://photo-portfolio-site-v2.vercel.app/',
     },
     image: '/images/screenshots/photoPortfolioScreenshot.png',
+    overline: 'Project',
     load: false,
     login: {
       username: 'admin@photo.com',
@@ -72,3 +76,5 @@ export const ProjectsListData = [
     },
   },
 ];
+
+export const email = 'briansuruki@gmail.com';
