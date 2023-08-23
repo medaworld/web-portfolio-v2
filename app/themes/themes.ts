@@ -22,6 +22,7 @@ export const lightTheme = {
   grdPk4: '#ff69b433',
   imageTintLight: '#00aad015',
   imageTintDark: '#ff69b415',
+  error: '#ff5454a0',
 };
 
 export const darkTheme = {
@@ -48,4 +49,5 @@ export const darkTheme = {
   grdPk4: '#cc56a433',
   imageTintLight: '#0094cc15',
   imageTintDark: '#cc56a415',
+  error: '#ff5454a0',
 };

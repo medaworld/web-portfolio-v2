@@ -67,7 +67,7 @@ export const ContactSubtitle = styled.h3`
   margin-bottom: 10px;
 `;
 
-export const ContactInput = styled.input`
+export const ContactInput = styled.input<{ invalid: boolean }>`
   outline: none;
   border: none;
   padding: 10px;
@@ -80,9 +80,11 @@ export const ContactInput = styled.input`
       ${(props) => props.theme.tpBgEnd}
     )
     ${(props) => props.theme.tpBgStart};
+
+  border: 1px solid ${(props) => (props.invalid ? props.theme.error : 'none')};
 `;
 
-export const ContactTextArea = styled.textarea`
+export const ContactTextArea = styled.textarea<{ invalid: boolean }>`
   outline: none;
   border: none;
   font-family: 'Roboto';
@@ -98,6 +100,8 @@ export const ContactTextArea = styled.textarea`
       ${(props) => props.theme.tpBgEnd}
     )
     ${(props) => props.theme.tpBgStart};
+
+  border: ${(props) => (props.invalid ? `1px solid red` : 'none')};
 `;
 
 export const SubmitButton = styled.button`

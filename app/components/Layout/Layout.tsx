@@ -8,6 +8,10 @@ import Navbar from './Navbar';
 import Loader from '../common/Loader';
 import Social from './Social';
 import { usePathname } from 'next/navigation';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import shouldForwardProp from '@emotion/is-prop-valid';
+import { StyleSheetManager } from 'styled-components';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -20,20 +24,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      <BlurAnimationCanvas />
-      {isLoading && isHome ? (
-        <Loader finishLoading={() => setIsLoading(false)} />
-      ) : (
-        <>
-          <Navbar isHome={isHome} />
-          <Email isHome={isHome} />
-          <Social isHome={isHome} />
-          <div id="content">
-            {children}
-            <Footer />
-          </div>
-        </>
-      )}
+      <StyleSheetManager shouldForwardProp={shouldForwardProp}>
+        <BlurAnimationCanvas />
+        {isLoading && isHome ? (
+          <Loader finishLoading={() => setIsLoading(false)} />
+        ) : (
+          <>
+            <ToastContainer />
+            <Navbar isHome={isHome} />
+            <Email isHome={isHome} />
+            <Social isHome={isHome} />
+            <div id="content">
+              {children}
+              <Footer />
+            </div>
+          </>
+        )}
+      </StyleSheetManager>
     </>
   );
 };
