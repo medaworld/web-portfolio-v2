@@ -1,13 +1,15 @@
-import { robotoSlab } from '@/app/fonts';
+import { robotoSlab } from '@/styles/fonts';
 import { SectionContainer, SectionTitle } from '../common/CommonStyles';
-import usePrefersReducedMotion from '@/app/hooks/usePrefersReducedMotion';
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
 import { useEffect, useRef } from 'react';
-import sr, { srConfig } from '@/app/utils/scrollUtils';
+import { srConfig } from '@/utils/scrollUtils';
 import { ProjectsGrid } from './WorkStyles';
-import { ProjectsListData } from '@/app/utils/dataUtils';
+import { ProjectsListData } from '@/utils/dataUtils';
 import ProjectItem from './ProjectItem';
+import useScrollReveal from '@/hooks/useScrollReveal';
 
 export default function Work() {
+  const sr: scrollReveal.ScrollRevealObject | null = useScrollReveal();
   const revealTitle = useRef(null);
   const revealProjects = useRef<(HTMLLIElement | null)[]>([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -26,7 +28,7 @@ export default function Work() {
         sr.reveal(ref, srConfig(i * 100));
       }
     });
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, sr]);
 
   return (
     <SectionContainer id={'work'}>

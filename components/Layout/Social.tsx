@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Side from '../common/Side';
 import SocialMediaIcon from '../common/SocialMediaIcon';
-import { SocialMediaList } from '@/app/utils/dataUtils';
+import { SocialMediaList } from '@/utils/dataUtils';
 
 const StyledSocialList = styled.ul`
   display: flex;

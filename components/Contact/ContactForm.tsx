@@ -8,6 +8,7 @@ import {
 } from './ContactStyles';
 import { sendForm } from 'emailjs-com';
 import { toast } from 'react-toastify';
+import { roboto } from '@/styles/fonts';
 
 export default function ContactForm() {
   const [allowSubmit, setAllowSubmit] = useState(true);
@@ -86,7 +87,9 @@ export default function ContactForm() {
   }
   return (
     <ContactFormContainer onSubmit={handleSubmit} ref={formRef}>
-      <ContactSubtitle>or send a message</ContactSubtitle>
+      <ContactSubtitle className={roboto.className}>
+        or send a message
+      </ContactSubtitle>
       <ContactInput
         type="text"
         placeholder="Your name"
@@ -94,6 +97,7 @@ export default function ContactForm() {
         value={enteredName}
         onChange={nameChangeHandler}
         invalid={invalidName}
+        className={roboto.className}
       />
       <ContactInput
         type="email"
@@ -102,6 +106,7 @@ export default function ContactForm() {
         value={enteredEmail}
         onChange={emailChangeHandler}
         invalid={invalidEmail}
+        className={roboto.className}
       />
       <ContactTextArea
         placeholder="Your message"
@@ -109,6 +114,7 @@ export default function ContactForm() {
         value={enteredMessage}
         onChange={messageChangeHandler}
         invalid={invalidMessage}
+        className={roboto.className}
       ></ContactTextArea>
       <SubmitButton>Send Message</SubmitButton>
     </ContactFormContainer>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { raleway, robotoSlab } from '../../fonts';
+import { raleway, roboto, robotoSlab } from '@/styles/fonts';
 import {
   HeroContainer,
   HeroText,
@@ -8,8 +8,8 @@ import {
   SubTitle,
   MainText,
 } from './HeroStyles';
-import usePrefersReducedMotion from '@/app/hooks/usePrefersReducedMotion';
-import { loaderDelay, navDelay } from '@/app/utils/delayUtils';
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
+import { loaderDelay, navDelay } from '@/utils/delayUtils';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export default function Hero() {
@@ -35,7 +35,7 @@ export default function Hero() {
     </SubTitle>
   );
   const four = (
-    <MainText>
+    <MainText className={roboto.className}>
       Driven by challenges and fueled by passion, I specialize in creating
       intuitive and efficient web solutions. Let&apos;s build something great
       together.

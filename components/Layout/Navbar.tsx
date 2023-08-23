@@ -1,5 +1,5 @@
 import Logo from '../common/Logo';
-import { NavLinkList } from '@/app/utils/dataUtils';
+import { NavLinkList } from '@/utils/dataUtils';
 import { useEffect, useState } from 'react';
 import {
   Header,
@@ -9,10 +9,10 @@ import {
   NavLinks,
   NavLogo,
 } from './NavbarStyles';
-import { raleway } from '@/app/fonts';
-import { loaderDelay } from '@/app/utils/delayUtils';
-import usePrefersReducedMotion from '@/app/hooks/usePrefersReducedMotion';
-import useScrollDirection from '@/app/hooks/useScrollDirection';
+import { raleway } from '@/styles/fonts';
+import { loaderDelay } from '@/utils/delayUtils';
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
+import useScrollDirection from '@/hooks/useScrollDirection';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Menu from './Menu';
 

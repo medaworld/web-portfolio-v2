@@ -1,4 +1,4 @@
-import { raleway } from '@/app/fonts';
+import { raleway, roboto } from '@/styles/fonts';
 import {
   Project,
   ProjectContent,
@@ -11,10 +11,9 @@ import {
   ImageWrapper,
   ProjectLogin,
 } from './WorkStyles';
-import Image from 'next/image';
 import { RxExternalLink, RxGithubLogo } from 'react-icons/rx';
 import React from 'react';
-import { ProjectProps } from '@/app/types/types';
+import { ProjectProps } from '@/types/types';
 
 const ProjectItem = React.forwardRef<HTMLLIElement, { project: ProjectProps }>(
   ({ project }, ref) => {
@@ -24,12 +23,18 @@ const ProjectItem = React.forwardRef<HTMLLIElement, { project: ProjectProps }>(
           <ProjectOverline className={raleway.className}>
             {project.overline}
           </ProjectOverline>
-          <ProjectTitle className="project-title">
+          <ProjectTitle
+            className={`${roboto.className}
+          project-title`}
+          >
             <a href={project.links.live ? project.links.live : '#'}>
               {project.title}
             </a>
           </ProjectTitle>
-          <ProjectDescription className="project-description">
+          <ProjectDescription
+            className={`${roboto.className}
+          project-description`}
+          >
             <p>{project.description}</p>
             {project.login && (
               <ProjectLogin>

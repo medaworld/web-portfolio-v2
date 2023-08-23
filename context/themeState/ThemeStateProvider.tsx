@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { darkTheme, lightTheme } from '../../themes/themes';
+import { darkTheme, lightTheme } from '@/themes/themes';
 import { ThemeStateContext } from './ThemeStateContext';
 
 interface ContextProps {

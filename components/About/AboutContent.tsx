@@ -5,12 +5,13 @@ import {
   ContentImage,
 } from './AboutStyles';
 import Image from 'next/image';
+import { roboto } from '@/styles/fonts';
 
 export default function AboutContent() {
   return (
     <Content>
       <ContentText>
-        <ContentParagraph>
+        <ContentParagraph className={roboto.className}>
           <p>
             Hey there, I&apos;m Brian. Even as a kid, I was reshaping the
             digital landscapes of MySpace and Tumblr with my custom themes. This

@@ -1,22 +1,24 @@
-import { robotoSlab } from '@/app/fonts';
+import { robotoSlab } from '@/styles/fonts';
 import AboutContent from './AboutContent';
 import AboutTechStack from './AboutTechStack';
 import { SectionContainer, SectionTitle } from '../common/CommonStyles';
 import { useEffect, useRef } from 'react';
-import usePrefersReducedMotion from '@/app/hooks/usePrefersReducedMotion';
-import sr, { srConfig } from '@/app/utils/scrollUtils';
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
+import { srConfig } from '@/utils/scrollUtils';
+import useScrollReveal from '@/hooks/useScrollReveal';
 
 export default function About() {
+  const sr: scrollReveal.ScrollRevealObject | null = useScrollReveal();
   const revealContainer = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion || !sr || !revealContainer.current) {
+    if (prefersReducedMotion || !revealContainer.current || !sr) {
       return;
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, sr]);
 
   return (
     <SectionContainer id={'about'} ref={revealContainer}>

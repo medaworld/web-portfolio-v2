@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { email } from '@/app/utils/dataUtils';
+import { email } from '@/utils/dataUtils';
 import Side from '../common/Side';
-import { raleway } from '@/app/fonts';
+import { raleway } from '@/styles/fonts';
 
 const StyledLinkWrapper = styled.div`
   display: flex;

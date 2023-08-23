@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
-import { loaderDelay } from '@/app/utils/delayUtils';
-import usePrefersReducedMotion from '@/app/hooks/usePrefersReducedMotion';
+import { loaderDelay } from '@/utils/delayUtils';
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
 
 const StyledSideElement = styled.div<{ orientation: string }>`
   width: 40px;

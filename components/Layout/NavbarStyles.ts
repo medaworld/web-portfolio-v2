@@ -1,4 +1,4 @@
-import { size } from '@/app/utils/breakpointsUtils';
+import { size } from '@/utils/breakpointsUtils';
 import Link from 'next/link';
 import { css, styled } from 'styled-components';
 

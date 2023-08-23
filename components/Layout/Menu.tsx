@@ -1,5 +1,5 @@
-import useOnClickOutside from '@/app/hooks/useOnClickOutside';
-import { NavLinkList } from '@/app/utils/dataUtils';
+import useOnClickOutside from '@/hooks/useOnClickOutside';
+import { NavLinkList } from '@/utils/dataUtils';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 import {
@@ -10,7 +10,7 @@ import {
   HamburgerInner,
   NavLinks,
 } from './MenuStyles';
-import { raleway } from '@/app/fonts';
+import { raleway } from '@/styles/fonts';
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);

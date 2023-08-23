@@ -1,4 +1,4 @@
-import { SocialMediaList } from '@/app/utils/dataUtils';
+import { SocialMediaList } from '@/utils/dataUtils';
 import { Key } from 'react';
 import { styled } from 'styled-components';
 import SocialMediaIcon from '../common/SocialMediaIcon';
