@@ -4,6 +4,11 @@ export const NavLinkList = [
   { title: 'Contact', path: 'contact' },
 ];
 
+export const SocialMediaList = [
+  { platform: 'github', url: 'https://github.com/medaworld' },
+  { platform: 'linkedin', url: 'https://www.linkedin.com/in/briansuruki' },
+];
+
 export const ProjectsListData = [
   {
     title: 'Blockchain.com Explorer',

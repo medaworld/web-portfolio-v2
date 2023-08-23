@@ -14,10 +14,6 @@ const SocialLink = styled.a`
   align-items: center;
   transition: all 0.3s ease;
   margin: 10px;
-
-  &:hover {
-    opacity: 0.7;
-  }
 `;
 
 interface SocialMediaIconProps {
@@ -25,7 +21,6 @@ interface SocialMediaIconProps {
   size: number;
   platform: string;
   margin?: string;
-  color?: string;
 }
 
 const SocialMediaIcon = ({
@@ -33,7 +28,6 @@ const SocialMediaIcon = ({
   size,
   platform,
   margin,
-  color,
 }: SocialMediaIconProps) => {
   return (
     <SocialLink
@@ -41,21 +35,11 @@ const SocialMediaIcon = ({
       target="_blank"
       style={{ margin: margin ? margin : 0 }}
     >
-      {platform === 'linkedin' && (
-        <FaLinkedin size={size} color={color ? color : 'black'} />
-      )}
-      {platform === 'github' && (
-        <FaGithub size={size} color={color ? color : 'black'} />
-      )}
-      {platform === 'instagram' && (
-        <FaInstagram size={size} color={color ? color : 'black'} />
-      )}
-      {platform === 'twitter' && (
-        <FaTwitter size={size} color={color ? color : 'black'} />
-      )}
-      {platform === 'facebook' && (
-        <FaFacebook size={size} color={color ? color : 'black'} />
-      )}
+      {platform === 'linkedin' && <FaLinkedin size={size} />}
+      {platform === 'github' && <FaGithub size={size} />}
+      {platform === 'instagram' && <FaInstagram size={size} />}
+      {platform === 'twitter' && <FaTwitter size={size} />}
+      {platform === 'facebook' && <FaFacebook size={size} />}
     </SocialLink>
   );
 };

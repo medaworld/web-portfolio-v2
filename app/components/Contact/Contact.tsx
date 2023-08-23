@@ -54,6 +54,7 @@ export default function Contact() {
         to reach out if you have any questions or just want to connect!
       </ContactStatement>
       <EmailLink href={`mailto:${email}`}>Send Email</EmailLink>
+
       <ContactForm />
     </ContactContainer>
   );

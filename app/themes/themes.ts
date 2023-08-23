@@ -1,5 +1,25 @@
 export const lightTheme = {
   id: 'light',
+
+  primary: '#000',
+  secondary: '#555',
+  tertiary: '#555',
+  color: '#00aadeff',
+  backgroundStart: 'rgb(214, 219, 220)',
+  backgroundEnd: 'rgb(255,255,255)',
+  shadow: '#333333a0',
+  tpBackground: '#ffffff50',
+  border: '#eee',
+  hover: '#eeeeeea0',
+  error: '#f44e4e',
+  success: '#4ef461',
+  primaryButton: '#007bff',
+  ovalStart: 'rgba(255, 255, 255, 1)',
+  ovalEnd: 'rgba(255, 255, 255, 0)',
+};
+
+export const darkTheme = {
+  id: 'dark',
   primary: '#333',
   secondary: '#555',
   tertiary: '#777',
@@ -11,4 +31,6 @@ export const lightTheme = {
   success: '#4ef461',
   primaryButton: '#007bff',
   color: '#407095',
+  ovalStart: 'rgba(0, 0, 0, 1)',
+  ovalEnd: 'rgba(0, 0, 0, 0)',
 };

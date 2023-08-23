@@ -1,8 +1,9 @@
-import './globals.css';
 import type { Metadata } from 'next';
 import StyledComponentsRegistry from './lib/registry';
 import Layout from './components/Layout/Layout';
 import { roboto } from './fonts';
+import { GlobalStyles } from './styles/Globals';
+import { ThemeStateContextProvider } from './context/themeState/ThemeStateProvider';
 
 export const metadata: Metadata = {
   title: 'Web Portfolio',
@@ -18,7 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <StyledComponentsRegistry>
-          <Layout>{children}</Layout>
+          <ThemeStateContextProvider>
+            <GlobalStyles />
+            <Layout>{children}</Layout>
+          </ThemeStateContextProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

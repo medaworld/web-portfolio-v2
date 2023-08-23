@@ -67,7 +67,7 @@ const SubmitButton = styled.button`
 export default function ContactForm() {
   return (
     <ContactFormContainer>
-      <ContactTitle>Send a Message</ContactTitle>
+      <ContactTitle>or send a message</ContactTitle>
       <ContactInput placeholder="Your name" />
       <ContactInput placeholder="Your email" />
       <ContactTextArea placeholder="Your message"></ContactTextArea>

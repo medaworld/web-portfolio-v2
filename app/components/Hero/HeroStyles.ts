@@ -13,13 +13,12 @@ export const HeroContainer = styled.section`
 export const HeroText = styled.div`
   display: flex;
   flex-direction: column;
-  -webkit-font-smoothing: antialiased;
   z-index: 1;
 `;
 
 export const PreTitle = styled.h1`
   font-size: 18px;
-  color: #00aadeff;
+  color: ${(props) => props.theme.color};
 `;
 
 export const Name = styled.h2`

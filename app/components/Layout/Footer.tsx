@@ -1,4 +1,7 @@
+import { SocialMediaList } from '@/app/utils/dataUtils';
+import { Key } from 'react';
 import { styled } from 'styled-components';
+import SocialMediaIcon from '../common/SocialMediaIcon';
 
 const FooterContainer = styled.footer`
   flex-direction: column;
@@ -8,65 +11,50 @@ const FooterContainer = styled.footer`
   text-align: center;
 `;
 
-const FooterSocials = styled.div`
+const FooterSocials = styled.ul`
   display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
   @media (max-width: 768px) {
-    display: block;
-    width: 100%;
-    max-width: 270px;
+    display: flex;
+    width: fit-content;
+    align-self: center;
     margin: 0 auto 10px;
   }
 
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    a {
-      padding: 10px;
-      svg {
-        width: 20px;
-        height: 20px;
-      }
-    }
+  li {
+    padding: 10px;
+    z-index: 1;
   }
 `;
 
 const StyledCredit = styled.div`
-  color: var(--light-slate);
   font-size: 14px;
   line-height: 1;
 
   a {
+    z-index: 1;
     padding: 10px;
-  }
-
-  .github-stats {
-    margin-top: 10px;
-
-    & > span {
-      display: inline-flex;
-      align-items: center;
-      margin: 0 7px;
-    }
-    svg {
-      display: inline-block;
-      margin-right: 5px;
-      width: 14px;
-      height: 14px;
-    }
   }
 `;
 export default function Footer() {
   return (
     <FooterContainer>
-      <FooterSocials></FooterSocials>
+      <FooterSocials>
+        {SocialMediaList &&
+          SocialMediaList.map(
+            ({ platform, url }: { platform: string; url: string }, i: Key) => (
+              <li key={i}>
+                <SocialMediaIcon href={url} platform={platform} size={20} />
+              </li>
+            )
+          )}
+      </FooterSocials>
       <StyledCredit>
-        <a href="https://github.com/bchiang7/v4">
-          <h4>Brian Suruki</h4>
-          <p>Web Developer & Designer</p>
-        </a>
+        <h4>Brian Suruki</h4>
+        <p>Web Developer & Designer</p>
       </StyledCredit>
     </FooterContainer>
   );

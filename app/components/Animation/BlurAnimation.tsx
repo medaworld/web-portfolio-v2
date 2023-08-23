@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import styled, { useTheme } from 'styled-components';
 
 interface IShape {
   x: number;
@@ -88,8 +88,6 @@ class BlurAnimation {
   private init() {
     this.initCanvas();
     this.animate();
-    window.addEventListener('resize', () => this.initCanvas());
-    window.addEventListener('mousemove', (e) => this.onMouseMove(e));
     window.addEventListener('resize', this.initCanvasBound);
     window.addEventListener('mousemove', this.onMouseMoveBound);
   }
@@ -101,16 +99,14 @@ class BlurAnimation {
 
   private onMouseMove(event: MouseEvent) {
     const { clientX, clientY } = event;
-    if (this.canvas) {
-      const rect = this.canvas.getBoundingClientRect();
+    const rect = this.canvas?.getBoundingClientRect();
+    if (rect) {
       const { w, h } = this.canvasSize;
       const x = clientX - rect.left - w / 2;
       const y = clientY - rect.top - h / 2;
-      const inside = x < w / 2 && x > -(w / 2) && y < h / 2 && y > -(h / 2);
-      if (inside) {
-        this.mouse.x = x;
-        this.mouse.y = y;
-      }
+
+      this.mouse.x = x;
+      this.mouse.y = y;
     }
   }
 
@@ -118,15 +114,14 @@ class BlurAnimation {
     this.shapes.length = 0;
     this.canvasSize.w = this.canvasContainer?.offsetWidth || 0;
     this.canvasSize.h = this.canvasContainer?.offsetHeight || 0;
-    if (this.canvas) {
-      this.canvas.width = this.canvasSize.w * this.dpr;
-      this.canvas.height = this.canvasSize.h * this.dpr;
-      this.canvas.style.width = this.canvasSize.w + 'px';
-      this.canvas.style.height = this.canvasSize.h + 'px';
-      if (this.context) {
-        this.context.scale(this.dpr, this.dpr);
-      }
-    }
+    if (!this.canvas || !this.context) return;
+
+    this.canvas.width = this.canvasSize.w * this.dpr;
+    this.canvas.height = this.canvasSize.h * this.dpr;
+    this.canvas.style.width = this.canvasSize.w + 'px';
+    this.canvas.style.height = this.canvasSize.h + 'px';
+
+    this.context.scale(this.dpr, this.dpr);
   }
 
   private shapeParams(): IShape {
@@ -207,10 +202,9 @@ class BlurAnimation {
 
   private drawParticles() {
     this.clearContext();
-    const particleCount = this.settings.quantity;
-    for (let i = 0; i < particleCount; i++) {
-      const shape = this.shapeParams();
-      this.drawShape(shape);
+
+    for (let i = 0; i < this.settings.quantity; i++) {
+      this.drawShape(this.shapeParams());
     }
   }
 
@@ -273,7 +267,7 @@ class BlurAnimation {
         this.drawShape(shape, true);
       }
     });
-    requestAnimationFrame(() => this.animate());
+    requestAnimationFrame(this.animate.bind(this));
   }
 
   public destroy() {
@@ -286,30 +280,34 @@ const CanvasContainer = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
-  /* background-color: #111827; */
+  z-index: 0;
   canvas {
     filter: blur(40px);
+    -webkit-filter: blur(40px);
   }
 `;
 
-let customGradientColors: any;
-// customGradientColors = {
-//   startColor: 'rgba(0, 0, 0, 1)',
-//   endColor: 'rgba(0, 0, 0, 0)',
-// };
-
 export default function BlurAnimationCanvas() {
+  const theme = useTheme();
+  let customGradientColors: any;
+  customGradientColors = {
+    startColor: theme.ovalStart,
+    endColor: theme.ovalEnd,
+  };
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
+
+  const initializeBlurAnimation = useCallback(() => {
     const instance = new BlurAnimation(
       canvasRef.current,
       undefined,
-      customGradientColors ? customGradientColors : undefined
+      customGradientColors
     );
     return () => {
-      instance.destroy && instance.destroy();
+      instance.destroy();
     };
-  }, []);
+  }, [customGradientColors]);
+
+  useEffect(initializeBlurAnimation, [initializeBlurAnimation]);
 
   return (
     <CanvasContainer>

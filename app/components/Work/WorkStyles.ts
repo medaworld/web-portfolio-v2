@@ -85,7 +85,7 @@ export const ProjectContent = styled.div`
   position: relative;
   grid-column: 1 / 7;
   grid-row: 1 / -1;
-  z-index: 4;
+  z-index: 1;
 
   @media (max-width: 1080px) {
     grid-column: 1 / 9;
@@ -147,7 +147,7 @@ export const ProjectTitle = styled.h3`
 
 export const ProjectDescription = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 1;
   padding: 25px;
   border-radius: 5px;
   backdrop-filter: blur(10px);
@@ -170,7 +170,7 @@ export const ProjectTechList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   margin: 25px 0 10px;
   padding: 0;
   list-style: none;
@@ -210,13 +210,13 @@ export const ProjectLinks = styled.div`
 
   a {
     padding: 10px;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
+    align-items: center;
 
     &.external {
       svg {
         width: 22px;
         height: 22px;
-        margin-top: -4px;
       }
     }
 
@@ -226,7 +226,7 @@ export const ProjectLinks = styled.div`
     }
 
     &:hover {
-      opacity: 0.7;
+      color: #00aadeff;
     }
   }
 
@@ -245,6 +245,7 @@ export const ProjectLogin = styled.div`
   a {
     background-color: #00aadeaa;
     color: white;
+    font-weight: 600;
     padding: 5px 10px;
     line-height: 40px;
     font-size: 14px;
@@ -269,7 +270,7 @@ export const ProjectImage = styled.div`
   overflow: hidden;
 
   a {
-    background-color: #ebc9edaa;
+    background-color: #00aade20;
 
     &:hover,
     &:focus {
@@ -292,7 +293,7 @@ export const ProjectImage = styled.div`
       bottom: 0;
       z-index: 1;
       transition: all 0.3s ease;
-      background-color: #24333f;
+      background-color: #58435350;
       mix-blend-mode: screen;
     }
   }
