@@ -55,6 +55,10 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+
+    &:hover {
+      color: ${(props) => props.theme.color};
+    }
   }
 
   @media (prefers-color-scheme: dark) {

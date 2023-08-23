@@ -31,7 +31,6 @@ const StyledLinkWrapper = styled.div`
 
     &:hover,
     &:focus {
-      color: ${(props) => props.theme.color};
       transform: translateY(-3px);
     }
   }

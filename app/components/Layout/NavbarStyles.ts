@@ -20,7 +20,12 @@ export const Header = styled.header<{
   user-select: auto !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  background-color: ${(props) => props.theme.tpBackground};
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      ${(props) => props.theme.tpBgEnd}
+    )
+    ${(props) => props.theme.tpBgStart};
   transition: var(--transition);
 
   @media (prefers-reduced-motion: no-preference) {

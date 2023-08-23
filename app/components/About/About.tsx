@@ -16,8 +16,7 @@ export default function About() {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <SectionContainer id={'about'} ref={revealContainer}>

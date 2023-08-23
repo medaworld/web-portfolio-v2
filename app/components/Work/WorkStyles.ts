@@ -108,7 +108,7 @@ export const ProjectContent = styled.div`
 export const ProjectOverline = styled.p`
   margin: 10px 0;
   font-size: 18px;
-  color: #00aadeff;
+  color: ${(props) => props.theme.color};
 `;
 
 export const ProjectTitle = styled.h3`
@@ -120,9 +120,9 @@ export const ProjectTitle = styled.h3`
     background: linear-gradient(
         to bottom,
         transparent,
-        rgba(250, 250, 250, 0.2)
+        ${(props) => props.theme.tpBgEnd}
       )
-      rgba(214, 219, 220, 0.5);
+      ${(props) => props.theme.tpBgStart};
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: opacity 0.2s ease;
@@ -152,8 +152,12 @@ export const ProjectDescription = styled.div`
   border-radius: 5px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  background: linear-gradient(to bottom, transparent, rgba(250, 250, 250, 0.2))
-    rgba(214, 219, 220, 0.5);
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      ${(props) => props.theme.tpBgEnd}
+    )
+    ${(props) => props.theme.tpBgStart};
 
   @media (max-width: 768px) {
     padding: 20px 0;
@@ -226,7 +230,7 @@ export const ProjectLinks = styled.div`
     }
 
     &:hover {
-      color: #00aadeff;
+      color: ${(props) => props.theme.color};
     }
   }
 
@@ -243,7 +247,7 @@ export const ProjectLogin = styled.div`
   }
 
   a {
-    background-color: #00aadeaa;
+    background-color: ${(props) => props.theme.button};
     color: white;
     font-weight: 600;
     padding: 5px 10px;
@@ -253,7 +257,8 @@ export const ProjectLogin = styled.div`
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #00aadeff;
+      color: white;
+      background-color: ${(props) => props.theme.color};
     }
   }
 `;
@@ -270,7 +275,7 @@ export const ProjectImage = styled.div`
   overflow: hidden;
 
   a {
-    background-color: #00aade20;
+    background-color: ${(props) => props.theme.imageTintLight};
 
     &:hover,
     &:focus {
@@ -292,8 +297,8 @@ export const ProjectImage = styled.div`
       right: 0;
       bottom: 0;
       z-index: 1;
-      transition: all 0.3s ease;
-      background-color: #58435350;
+      transition: var(--transition);
+      background-color: ${(props) => props.theme.imageTintDark};
       mix-blend-mode: screen;
     }
   }

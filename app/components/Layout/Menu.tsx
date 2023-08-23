@@ -1,6 +1,6 @@
 import useOnClickOutside from '@/app/hooks/useOnClickOutside';
 import { NavLinkList } from '@/app/utils/dataUtils';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 import {
   MenuContainer,
@@ -20,61 +20,74 @@ const Menu = () => {
   const buttonRef = useRef(null);
   const navRef = useRef<HTMLElement>(null);
 
-  let menuFocusables: any[];
-  let firstFocusableEl: any;
-  let lastFocusableEl: any;
+  const menuFocusablesRef = useRef<any[]>([]);
+  const firstFocusableElRef = useRef<HTMLElement | null>(null);
+  const lastFocusableElRef = useRef<HTMLElement | null>(null);
 
-  const setFocusables = () => {
+  const setFocusables = useCallback(() => {
     if (navRef.current) {
-      menuFocusables = [
+      menuFocusablesRef.current = [
         buttonRef.current,
         ...Array.from(navRef.current.querySelectorAll('a')),
       ];
     }
-    firstFocusableEl = menuFocusables[0];
-    lastFocusableEl = menuFocusables[menuFocusables.length - 1];
-  };
+    firstFocusableElRef.current = menuFocusablesRef.current[0];
+    lastFocusableElRef.current =
+      menuFocusablesRef.current[menuFocusablesRef.current.length - 1];
+  }, [navRef, buttonRef]);
 
-  const handleBackwardTab = (e: any) => {
-    if (document.activeElement === firstFocusableEl) {
-      e.preventDefault();
-      lastFocusableEl.focus();
-    }
-  };
-
-  const handleForwardTab = (e: any) => {
-    if (document.activeElement === lastFocusableEl) {
-      e.preventDefault();
-      firstFocusableEl.focus();
-    }
-  };
-
-  const onKeyDown = (e: any) => {
-    switch (e.key) {
-      case 'Escape':
-      case 'Esc': {
-        setMenuOpen(false);
-        break;
+  const handleBackwardTab = useCallback(
+    (e: any) => {
+      if (document.activeElement === firstFocusableElRef.current) {
+        e.preventDefault();
+        lastFocusableElRef.current?.focus();
       }
+    },
+    [firstFocusableElRef, lastFocusableElRef]
+  );
 
-      case 'Tab': {
-        if (menuFocusables && menuFocusables.length === 1) {
-          e.preventDefault();
+  const handleForwardTab = useCallback(
+    (e: any) => {
+      if (document.activeElement === lastFocusableElRef.current) {
+        e.preventDefault();
+        firstFocusableElRef.current?.focus();
+      }
+    },
+    [firstFocusableElRef, lastFocusableElRef]
+  );
+
+  const onKeyDown = useCallback(
+    (e: any) => {
+      switch (e.key) {
+        case 'Escape':
+        case 'Esc': {
+          setMenuOpen(false);
           break;
         }
-        if (e.shiftKey) {
-          handleBackwardTab(e);
-        } else {
-          handleForwardTab(e);
-        }
-        break;
-      }
 
-      default: {
-        break;
+        case 'Tab': {
+          if (
+            menuFocusablesRef.current &&
+            menuFocusablesRef.current.length === 1
+          ) {
+            e.preventDefault();
+            break;
+          }
+          if (e.shiftKey) {
+            handleBackwardTab(e);
+          } else {
+            handleForwardTab(e);
+          }
+          break;
+        }
+
+        default: {
+          break;
+        }
       }
-    }
-  };
+    },
+    [handleBackwardTab, handleForwardTab]
+  );
 
   const onResize = (e: any) => {
     if (e.currentTarget.innerWidth > 768) {
@@ -92,8 +105,7 @@ const Menu = () => {
       document.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('resize', onResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [onKeyDown, setFocusables]);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   useOnClickOutside(wrapperRef, () => setMenuOpen(false));

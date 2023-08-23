@@ -23,8 +23,7 @@ export default function Hero() {
 
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [prefersReducedMotion]);
 
   const one = (
     <PreTitle className={raleway.className}>Welcome! My name is</PreTitle>
