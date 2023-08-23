@@ -32,7 +32,9 @@ export default function Contact() {
         I&apos;m always open to new opportunities and collaborations. Feel free
         to reach out if you have any questions or just want to connect!
       </ContactStatement>
-      <EmailLink href={`mailto:${email}`}>Send Email</EmailLink>
+      <EmailLink href={`mailto:${email}`} className={roboto.className}>
+        Send Email
+      </EmailLink>
 
       <ContactForm />
     </ContactContainer>
