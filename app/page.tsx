@@ -28,7 +28,7 @@ const MainContainer = styled.main`
 
 export default function Home() {
   return (
-    <MainContainer>
+    <MainContainer id={'top'}>
       <Hero />
       <About />
       <Work />
