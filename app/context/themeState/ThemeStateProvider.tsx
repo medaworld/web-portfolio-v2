@@ -25,7 +25,7 @@ export const ThemeStateContextProvider: React.FC<ContextProps> = ({
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+    setTheme('newTheme');
 
     window.localStorage.setItem('theme', newTheme);
   };

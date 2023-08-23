@@ -12,8 +12,8 @@ export default function AboutContent() {
       <ContentText>
         <ContentParagraph>
           <p>
-            Hi I&apos;m Brian! From a young age, my affinity for creativity led
-            me to dabble with themes on platforms like MySpace and Tumblr. This
+            Hey there, I&apos;m Brian. Even as a kid, I was reshaping the
+            digital landscapes of MySpace and Tumblr with my custom themes. This
             intrinsic fascination was the starting point of my web development
             journey, sowing the seeds for my future career.
           </p>

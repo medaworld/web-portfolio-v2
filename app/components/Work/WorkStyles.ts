@@ -180,7 +180,7 @@ export const ProjectTechList = styled.ul`
   list-style: none;
 
   li {
-    color: #333;
+    color: ${(props) => props.theme.secondary};
     padding: 3px;
     border-radius: 5px;
     backdrop-filter: blur(10px);
@@ -325,6 +325,7 @@ export const ImageWrapper = styled.div`
 
   @media (max-width: 768px) {
     .img {
+      max-width: 700px;
       object-fit: cover;
       object-position: center;
       width: auto;

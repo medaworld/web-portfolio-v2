@@ -7,6 +7,7 @@ export const Content = styled.div`
 
   @media (max-width: 768px) {
     display: block;
+    align-items: center;
   }
 `;
 
@@ -25,7 +26,6 @@ export const ContentImage = styled.div`
   position: relative;
   top: 0px;
   left: 0px;
-  max-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;

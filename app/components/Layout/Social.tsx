@@ -19,7 +19,7 @@ const StyledSocialList = styled.ul`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: black;
+    background-color: ${(props) => props.theme.primary};
   }
 
   li {

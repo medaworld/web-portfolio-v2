@@ -2,6 +2,10 @@ import { styled } from 'styled-components';
 
 export const SectionContainer = styled.section`
   padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 `;
 
 export const SectionTitle = styled.h2`
