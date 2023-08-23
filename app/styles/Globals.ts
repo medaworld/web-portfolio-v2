@@ -29,6 +29,9 @@ export const GlobalStyles = createGlobalStyle`
     )
     ${(props) => props.theme.backgroundStart};
     
+    &.hidden {
+      overflow: hidden;
+    }
 
     &.blur {
       display: initial;

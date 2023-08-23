@@ -13,16 +13,21 @@ const StyledLoader = styled.div<{ isMounted: boolean }>`
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--dark-navy);
   z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .logo-wrapper {
     width: max-content;
-    max-width: 100px;
+    max-width: 150px;
     transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: ${(props) => (props.isMounted ? 1 : 0)};
+
     svg {
-      display: block;
       width: 100%;
       height: 100%;
       margin: 0 auto;
@@ -72,7 +77,7 @@ const Loader = ({ finishLoading }: { finishLoading: () => void }) => {
         opacity: 0,
         zIndex: -1,
       });
-  }, [finishLoading]); //
+  }, [finishLoading]);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
@@ -83,7 +88,6 @@ const Loader = ({ finishLoading }: { finishLoading: () => void }) => {
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
       <Helmet bodyAttributes={{ class: `hidden` }} />
-
       <div className="logo-wrapper">
         <IconLoader />
       </div>

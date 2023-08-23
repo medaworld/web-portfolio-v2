@@ -305,7 +305,8 @@ export default function BlurAnimationCanvas() {
     return () => {
       instance.destroy();
     };
-  }, [customGradientColors]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(initializeBlurAnimation, [initializeBlurAnimation]);
 
