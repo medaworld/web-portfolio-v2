@@ -188,9 +188,9 @@ export const ProjectTechList = styled.ul`
     background: linear-gradient(
         to bottom,
         transparent,
-        rgba(250, 250, 250, 0.2)
+        ${(props) => props.theme.tpBgEnd}
       )
-      rgba(214, 219, 220, 0.5);
+      ${(props) => props.theme.tpBgStart};
     margin: 0 20px 5px 0;
     font-size: 14px;
     white-space: nowrap;

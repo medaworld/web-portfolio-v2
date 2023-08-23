@@ -93,13 +93,9 @@ const ProjectItem = React.forwardRef<HTMLLIElement, { project: ProjectProps }>(
             target="_blank"
           >
             <ImageWrapper>
-              <Image
-                className="img"
-                src={project.image}
-                alt={project.title}
-                width={700}
-                height={438}
-              />
+              <picture>
+                <img className="img" src={project.image} alt={project.title} />
+              </picture>
             </ImageWrapper>
           </a>
         </ProjectImage>
