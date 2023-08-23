@@ -80,7 +80,7 @@ export default function Footer() {
 
   return (
     <FooterContainer>
-      <FooterNav>
+      <FooterNav className={roboto.className}>
         {NavLinkList.map((navLink, key) => {
           return (
             <li key={key}>

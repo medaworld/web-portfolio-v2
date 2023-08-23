@@ -22,6 +22,7 @@ import {
 } from '../common/SvgIcons';
 import { useState } from 'react';
 import { TechIconsContainer, TechTitle } from './AboutStyles';
+import { roboto } from '@/styles/fonts';
 
 export default function AboutTechStack() {
   const [hoveredTitle, setHoveredTitle] = useState('');
@@ -119,7 +120,7 @@ export default function AboutTechStack() {
           onMouseLeave={() => setHoveredTitle('')}
         />
       </TechIconsContainer>
-      <TechTitle>{hoveredTitle}</TechTitle>
+      <TechTitle className={roboto.className}>{hoveredTitle}</TechTitle>
     </>
   );
 }

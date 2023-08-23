@@ -87,7 +87,6 @@ export const ContactInput = styled.input<{ invalid: boolean }>`
 export const ContactTextArea = styled.textarea<{ invalid: boolean }>`
   outline: none;
   border: none;
-  font-family: 'Roboto';
   padding: 10px;
   height: 100px;
   border-radius: 5px;
