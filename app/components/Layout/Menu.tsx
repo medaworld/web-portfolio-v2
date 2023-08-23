@@ -3,9 +3,9 @@ import { NavLinkList } from '@/app/utils/dataUtils';
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import {
-  StyledMenu,
-  StyledHamburgerButton,
-  StyledSidebar,
+  MenuContainer,
+  HamburgerButton,
+  Sidebar,
   HamburgerBox,
   HamburgerInner,
   NavLinks,
@@ -115,23 +115,19 @@ const Menu = () => {
   };
 
   return (
-    <StyledMenu>
+    <MenuContainer>
       <Helmet>
         <body className={menuOpen ? 'blur' : ''} />
       </Helmet>
 
       <div ref={wrapperRef}>
-        <StyledHamburgerButton
-          onClick={toggleMenu}
-          ref={buttonRef}
-          aria-label="Menu"
-        >
+        <HamburgerButton onClick={toggleMenu} ref={buttonRef} aria-label="Menu">
           <HamburgerBox>
             <HamburgerInner menuOpen={menuOpen} />
           </HamburgerBox>
-        </StyledHamburgerButton>
+        </HamburgerButton>
 
-        <StyledSidebar
+        <Sidebar
           menuOpen={menuOpen}
           aria-hidden={!menuOpen}
           tabIndex={menuOpen ? 1 : -1}
@@ -151,9 +147,9 @@ const Menu = () => {
               </NavLinks>
             )}
           </nav>
-        </StyledSidebar>
+        </Sidebar>
       </div>
-    </StyledMenu>
+    </MenuContainer>
   );
 };
 

@@ -61,10 +61,11 @@ export const TechIconsContainer = styled.div`
   svg {
     z-index: 1;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: var(--transition);
 
     &:hover {
-      opacity: 0.7;
+      transform: translateY(-3px);
+      color: ${(props) => props.theme.color};
     }
   }
 `;

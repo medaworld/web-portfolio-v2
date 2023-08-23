@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { raleway, robotoSlab } from '../../fonts';
 import {
   HeroContainer,
@@ -7,21 +8,66 @@ import {
   SubTitle,
   MainText,
 } from './HeroStyles';
+import usePrefersReducedMotion from '@/app/hooks/usePrefersReducedMotion';
+import { loaderDelay, navDelay } from '@/app/utils/delayUtils';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export default function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const timeout = setTimeout(() => setIsMounted(true), navDelay);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const one = (
+    <PreTitle className={raleway.className}>Welcome! My name is</PreTitle>
+  );
+  const two = <Name className={robotoSlab.className}>Brian Suruki</Name>;
+  const three = (
+    <SubTitle className={robotoSlab.className}>
+      Full-Stack Developer with a Front-End Focus
+    </SubTitle>
+  );
+  const four = (
+    <MainText>
+      Driven by challenges and fueled by passion, I specialize in creating
+      intuitive and efficient web solutions. Let&apos;s build something great
+      together.
+    </MainText>
+  );
+
+  const items = [one, two, three, four];
+
   return (
     <HeroContainer>
       <HeroText>
-        <PreTitle className={raleway.className}>Welcome! My name is</PreTitle>
-        <Name className={robotoSlab.className}>Brian Suruki</Name>
-        <SubTitle className={robotoSlab.className}>
-          Full-Stack Developer with a Front-End Focus
-        </SubTitle>
-        <MainText>
-          Driven by challenges and fueled by passion, I specialize in creating
-          intuitive and efficient web solutions. Let&apos;s build something
-          great together.
-        </MainText>
+        {prefersReducedMotion ? (
+          <>
+            {items.map((item, i) => (
+              <div key={i}>{item}</div>
+            ))}
+          </>
+        ) : (
+          <TransitionGroup component={null}>
+            {isMounted &&
+              items.map((item, i) => (
+                <CSSTransition
+                  key={i}
+                  classNames="fadeup"
+                  timeout={loaderDelay}
+                >
+                  <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
+        )}
       </HeroText>
     </HeroContainer>
   );

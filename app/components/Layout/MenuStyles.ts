@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const StyledMenu = styled.div`
+export const MenuContainer = styled.div`
   display: none;
 
   @media (max-width: 768px) {
@@ -8,7 +8,7 @@ export const StyledMenu = styled.div`
   }
 `;
 
-export const StyledHamburgerButton = styled.button`
+export const HamburgerButton = styled.button`
   display: none;
 
   @media (max-width: 768px) {
@@ -96,7 +96,7 @@ export const HamburgerInner = styled.div<{ menuOpen: boolean }>`
   }
 `;
 
-export const StyledSidebar = styled.aside<{ menuOpen: boolean }>`
+export const Sidebar = styled.aside<{ menuOpen: boolean }>`
   display: none;
 
   @media (max-width: 768px) {
@@ -130,43 +130,6 @@ export const StyledSidebar = styled.aside<{ menuOpen: boolean }>`
     color: ${(props) => props.theme.secondary};
     font-family: var(--font-mono);
     text-align: center;
-  }
-
-  ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    width: 100%;
-
-    li {
-      position: relative;
-      margin: 0 auto 20px;
-      counter-increment: item 1;
-      font-size: clamp(14px, 4vw, 18px);
-
-      @media (max-width: 600px) {
-        margin: 0 auto 10px;
-      }
-
-      &:before {
-        content: '0' counter(item) '.';
-        display: block;
-        margin-bottom: 5px;
-        color: ${(props) => props.theme.primary};
-        font-size: 14px;
-      }
-    }
-
-    a {
-      width: 100%;
-      padding: 3px 20px 20px;
-    }
-  }
-
-  .resume-link {
-    padding: 18px 50px;
-    margin: 10% auto 0;
-    width: max-content;
   }
 `;
 

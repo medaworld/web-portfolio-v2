@@ -27,7 +27,7 @@ export const Name = styled.h2`
 `;
 
 export const SubTitle = styled.h3`
-  color: #555;
+  color: ${(props) => props.theme.secondary};
   font-size: clamp(35px, 6vw, 40px);
 `;
 
