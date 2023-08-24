@@ -88,7 +88,7 @@ class BlurAnimation {
   private init() {
     this.initCanvas();
     this.animate();
-    window.addEventListener('resize', this.initCanvasBound);
+    // window.addEventListener('resize', this.initCanvasBound);
     window.addEventListener('mousemove', this.onMouseMoveBound);
   }
 
@@ -271,7 +271,7 @@ class BlurAnimation {
   }
 
   public destroy() {
-    window.removeEventListener('resize', this.initCanvasBound);
+    // window.removeEventListener('resize', this.initCanvasBound);
     window.removeEventListener('mousemove', this.onMouseMoveBound);
   }
 }

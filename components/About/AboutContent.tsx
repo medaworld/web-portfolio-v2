@@ -13,8 +13,8 @@ export default function AboutContent() {
       <ContentText>
         <ContentParagraph className={roboto.className}>
           <p>
-            Hey there, I&apos;m Brian. Even as a kid, I was reshaping the
-            digital landscapes of MySpace and Tumblr with my custom themes. This
+            Hey there, I&apos;m Brian. As a kid, I was reshaping the digital
+            landscapes of MySpace and Tumblr with my custom themes. This
             intrinsic fascination was the starting point of my web development
             journey, sowing the seeds for my future career.
           </p>
