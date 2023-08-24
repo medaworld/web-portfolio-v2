@@ -15,19 +15,27 @@ The second iteration of my web portfolio builds upon the foundation of the [firs
 
 - **About Section**: A deep dive into the background, journey, and aspirations.
 - **Projects Showcase**: Explore a curated list of projects, each capturing a unique blend of technology and creativity.
-- **Contact Form**: A direct line to get in touch, making interactions smooth and effortless.
+- **Contact**: A direct line to get in touch, making interactions smooth and effortless.
 - **Responsiveness**: Optimized for various screen sizes, ensuring a seamless experience across devices.
 
 ## Demo
 
-_Live Demo and Screenshots coming soon!_
+Experience the live version here: [Web Portfolio V2 Demo](https://web-portfolio-v2-ten.vercel.app/)
+![Screenshot](/public/images/screenshot.png)
 
 ## Technologies Used
 
-- **Next.js**: React framework for production-grade applications.
-- **Styled-components**: Enables styling React components using tagged template literals.
-- **TypeScript**: Bringing static type-checking to JavaScript, ensuring more robust code.
-- **Other Essentials**: HTML, CSS, JavaScript, and React.
+- **[Next.js](https://nextjs.org/)**: A leading React framework for production-ready applications.
+- **[Styled-components](https://styled-components.com/)**: Allows for styling React components using tagged template literals.
+- **[TypeScript](https://www.typescriptlang.org/)**: Enhances JavaScript with static types for a robust codebase.
+- **[React](https://reactjs.org/)** & **[React DOM](https://reactjs.org/docs/react-dom.html)**: A library for building user interfaces efficiently.
+- **[Font Awesome](https://fontawesome.com/)**: Provides a comprehensive set of icons and symbols.
+- **[Animejs](https://animejs.com/)**: A lightweight JavaScript animation library.
+- **[EmailJS](https://www.emailjs.com/)**: Helps send emails using client-side technologies.
+- **[React Helmet](https://github.com/nfl/react-helmet)**: A document head manager for React.
+- **[React Icons](https://react-icons.github.io/react-icons/)**: Popular icons in React applications.
+- **[React Toastify](https://fkhadra.github.io/react-toastify/introduction)**: Allows for easy notifications in React.
+- **[ScrollReveal](https://scrollrevealjs.org/)**: Offers simple scroll animations for web and mobile browsers.
 
 ## Getting Started
 
