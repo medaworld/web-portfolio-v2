@@ -281,6 +281,7 @@ const CanvasContainer = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: 0;
+  user-select: none;
   canvas {
     filter: blur(40px);
     -webkit-filter: blur(40px);
