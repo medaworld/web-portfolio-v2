@@ -74,6 +74,8 @@ export const ContactInput = styled.input<{ invalid: boolean }>`
   border-radius: 5px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  color: ${(props) => props.theme.primary};
+  font-size: 14px;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -93,6 +95,8 @@ export const ContactTextArea = styled.textarea<{ invalid: boolean }>`
   resize: none;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  color: ${(props) => props.theme.primary};
+  font-size: 14px;
   background: linear-gradient(
       to bottom,
       transparent,
