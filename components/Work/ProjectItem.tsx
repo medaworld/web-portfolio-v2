@@ -27,7 +27,11 @@ const ProjectItem = React.forwardRef<HTMLLIElement, { project: ProjectProps }>(
             className={`${roboto.className}
           project-title`}
           >
-            <a href={project.links.live ? project.links.live : '#'}>
+            <a
+              href={project.links.live ? project.links.live : '#'}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               {project.title}
             </a>
           </ProjectTitle>
