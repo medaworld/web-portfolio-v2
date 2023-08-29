@@ -51,8 +51,14 @@ export const ProjectsListData = [
   {
     title: 'Music Profile',
     description:
-      "Crafted with Next.js, this Music Profile offers enthusiasts a unified platform to immerse in an artist's journey—intuitively exploring social media links, engaging with tracks via an integrated media player, viewing videos, and staying updated on upcoming events and news.",
-    techStack: ['Next.js', 'React', 'Styled Components', 'TypeScript'],
+      "Developed using Next.js, this Music Profile serves as a centralized space where fans can access different facets of the artist's world. Central to its design is a media player, streamlined by the React Context API for a seamless auditory journey. An interactive carousel beautifully presents album art, each linked to streaming platforms and equipped with instant play capabilities. And to keep fans updated, a dynamic news feed effortlessly brings in the latest from a linked WordPress blog.",
+    techStack: [
+      'Next.js',
+      'React',
+      'Styled Components',
+      'TypeScript',
+      'React Player',
+    ],
     links: {
       github: 'https://github.com/medaworld/music-profile-site',
       live: 'https://music-profile-site.vercel.app/',
@@ -66,7 +72,13 @@ export const ProjectsListData = [
     title: 'Photo Portfolio',
     description:
       "Built with Next.js and Firebase, this photo portfolio offers a robust content management system, allowing for seamless uploads, edits, and organization of images into albums and collections. Leveraging Firebase's Firestore for data and Firebase Storage for image hosting ensures efficient and secure handling.",
-    techStack: ['Next.js', 'Firebase', 'Styled Components', 'EmailJS'],
+    techStack: [
+      'Next.js',
+      'Firebase',
+      'TypeScript',
+      'Styled Components',
+      'EmailJS',
+    ],
     links: {
       github: 'https://github.com/medaworld/photo-portfolio-site-v2',
       live: 'https://photo-portfolio-site-v2.vercel.app/',
