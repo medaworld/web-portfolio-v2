@@ -33,7 +33,7 @@ export const ProjectsListData = [
   {
     title: 'Cnnct Social',
     description:
-      'Cnnct is a mockup social media platform designed for a seamless user experience. Built with tools like React and Redux on the frontend and Node, Express, GraphQL, and Websocket on the backend, it offers interactive sharing, live messaging, and responsive feedback.',
+      'Cnnct Social is a mockup platform, merging React, Redux, Node, and Express for a smooth social media experience. It emphasizes dynamic content sharing and real-time messaging with the integration of GraphQL, Websocket, and Socket.IO, setting Cnnct as a model for social platforms.',
     techStack: [
       'React',
       'Redux',
@@ -59,7 +59,7 @@ export const ProjectsListData = [
   {
     title: 'Luminae Skincare',
     description:
-      "Luminae Skincare is a mockup ecommerce platform crafted to elegantly display a skincare brand's offerings. The project aimed to provide a seamless and aesthetically pleasing experience for users, ensuring both customers and administrators found it intuitive and user-friendly.",
+      "Luminae Skincare, built with Node and Express, showcases a skincare brand's premium offerings. Featuring an organized cart, Stripe integration for transactions, and admin tools for product management, it ensures a sleek experience for users and admins.",
     techStack: ['Node.js', 'Express', 'MongoDB', 'Bootstrap', 'EJS', 'Stripe'],
     links: {
       github: 'https://github.com/medaworld/luminae-ecommerce-site',
@@ -77,13 +77,13 @@ export const ProjectsListData = [
   {
     title: 'Music Profile',
     description:
-      "Developed using Next.js, this Music Profile serves as a centralized space where fans can access different facets of the artist's world. Central to its design is a media player, streamlined by the React Context API for a seamless auditory journey. An interactive carousel beautifully presents album art, each linked to streaming platforms and equipped with instant play capabilities. And to keep fans updated, a dynamic news feed effortlessly brings in the latest from a linked WordPress blog.",
+      'The Music Profile, built with Next.js & React, enables artists to showcase their presence. It features a built-in player via React Context & React-Player, a carousel for album art linking to streaming platforms, and integrates with WordPress public API for fresh news updates.',
     techStack: [
       'Next.js',
       'React',
       'Styled Components',
       'TypeScript',
-      'React Player',
+      'React-Player',
     ],
     links: {
       github: 'https://github.com/medaworld/music-profile-site',
@@ -97,7 +97,7 @@ export const ProjectsListData = [
   {
     title: 'Photo Portfolio',
     description:
-      "Built with Next.js and Firebase, this photo portfolio offers a robust content management system, allowing for seamless uploads, edits, and organization of images into albums and collections. Leveraging Firebase's Firestore for data and Firebase Storage for image hosting ensures efficient and secure handling.",
+      "The Photo Portfolio, made with Next.js & Firebase, simplifies photographers work displays. It offers strong content management, Firebase's Firestore for data, and Firebase Storage for uploads. With next-auth & Firebase-auth, it ensures secure admin access.",
     techStack: [
       'Next.js',
       'Firebase',
