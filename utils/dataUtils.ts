@@ -31,9 +31,9 @@ export const ProjectsListData = [
     login: null,
   },
   {
-    title: 'cnnct Social',
+    title: 'Cnnct Social',
     description:
-      'cnnct is a mockup social media platform designed for a seamless user experience. Built with tools like React and Redux on the frontend and tools like Node, Express, GraphQL, and Websocket on the backend, it offers quick sign-ins, interactive sharing, and responsive feedback.',
+      'Cnnct is a mockup social media platform designed for a seamless user experience. Built with tools like React and Redux on the frontend and Node, Express, GraphQL, and Websocket on the backend, it offers interactive sharing, live messaging, and responsive feedback.',
     techStack: [
       'React',
       'Redux',
@@ -42,10 +42,6 @@ export const ProjectsListData = [
       'Express',
       'GraphQL',
       'Socket.io',
-      'MongoDB',
-      'JWT',
-      'Cloudinary',
-      'TypeScript',
     ],
     links: {
       github: 'https://github.com/medaworld/cnnct-social-media',

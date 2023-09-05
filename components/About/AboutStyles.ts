@@ -57,6 +57,7 @@ export const TechIconsContainer = styled.div`
   gap: 20px 0px;
   margin-top: 20px;
   flex-wrap: wrap;
+  justify-items: center;
 
   svg {
     z-index: 1;

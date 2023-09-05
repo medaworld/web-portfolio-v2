@@ -273,6 +273,7 @@ export const ProjectImage = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: 0;
 
   a {
     background-color: ${(props) => props.theme.imageTintLight};
