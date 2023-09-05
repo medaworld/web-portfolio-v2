@@ -59,7 +59,7 @@ const ProjectItem = React.forwardRef<HTMLLIElement, { project: ProjectProps }>(
                 {project.load && (
                   <p>
                     <strong>Note:</strong> Please allow a minute for server to
-                    load
+                    initialize
                   </p>
                 )}
               </ProjectLogin>
