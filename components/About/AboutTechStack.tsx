@@ -11,13 +11,16 @@ import {
 import {
   ExpressIcon,
   FirebaseIcon,
+  GraphQLIcon,
   MongoIcon,
   MySQLIcon,
   NextIcon,
   PostgresqlIcon,
   ReactIcon,
   ReduxIcon,
+  SocketIOIcon,
   StyledComponentsIcon,
+  TailwindIcon,
   TypeScriptIcon,
 } from '../common/SvgIcons';
 import { useState } from 'react';
@@ -62,6 +65,14 @@ export default function AboutTechStack() {
           onMouseEnter={() => setHoveredTitle('Bootstrap')}
           onMouseLeave={() => setHoveredTitle('')}
         />
+        <TailwindIcon
+          onMouseEnter={() => setHoveredTitle('Tailwind CSS')}
+          onMouseLeave={() => setHoveredTitle('')}
+        />
+        <StyledComponentsIcon
+          onMouseEnter={() => setHoveredTitle('Styled Components')}
+          onMouseLeave={() => setHoveredTitle('')}
+        />
         <ReactIcon
           onMouseEnter={() => setHoveredTitle('React')}
           onMouseLeave={() => setHoveredTitle('')}
@@ -81,10 +92,6 @@ export default function AboutTechStack() {
           onMouseEnter={() => setHoveredTitle('Next.js')}
           onMouseLeave={() => setHoveredTitle('')}
         />
-        <StyledComponentsIcon
-          onMouseEnter={() => setHoveredTitle('Styled Components')}
-          onMouseLeave={() => setHoveredTitle('')}
-        />
         <FontAwesomeIcon
           icon={faNodeJs}
           size="2x"
@@ -94,6 +101,14 @@ export default function AboutTechStack() {
         />
         <ExpressIcon
           onMouseEnter={() => setHoveredTitle('Express')}
+          onMouseLeave={() => setHoveredTitle('')}
+        />
+        <GraphQLIcon
+          onMouseEnter={() => setHoveredTitle('GraphQL')}
+          onMouseLeave={() => setHoveredTitle('')}
+        />
+        <SocketIOIcon
+          onMouseEnter={() => setHoveredTitle('Socket.IO')}
           onMouseLeave={() => setHoveredTitle('')}
         />
         <FirebaseIcon

@@ -31,6 +31,36 @@ export const ProjectsListData = [
     login: null,
   },
   {
+    title: 'cnnct Social',
+    description:
+      'cnnct is a mockup social media platform designed for a seamless user experience. Built with tools like React and Redux on the frontend and tools like Node, Express, GraphQL, and Websocket on the backend, it offers quick sign-ins, interactive sharing, and responsive feedback.',
+    techStack: [
+      'React',
+      'Redux',
+      'Tailwind',
+      'Node.js',
+      'Express',
+      'GraphQL',
+      'Socket.io',
+      'MongoDB',
+      'JWT',
+      'Cloudinary',
+      'TypeScript',
+    ],
+    links: {
+      github: 'https://github.com/medaworld/cnnct-social-media',
+      live: 'https://cnnct-social.vercel.app/',
+    },
+    image: '/images/screenshots/cnnctScreenshot.webp',
+    overline: 'Project',
+    load: true,
+    login: {
+      username: 'usera',
+      password: 'usera',
+      link: 'https://cnnct-social.vercel.app/',
+    },
+  },
+  {
     title: 'Luminae Skincare',
     description:
       "Luminae Skincare is a mockup ecommerce platform crafted to elegantly display a skincare brand's offerings. The project aimed to provide a seamless and aesthetically pleasing experience for users, ensuring both customers and administrators found it intuitive and user-friendly.",

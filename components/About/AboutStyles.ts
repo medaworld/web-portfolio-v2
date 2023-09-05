@@ -52,9 +52,9 @@ export const ImageWrapper = styled.div`
 `;
 
 export const TechIconsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 20px 0px;
   margin-top: 20px;
   flex-wrap: wrap;
 
