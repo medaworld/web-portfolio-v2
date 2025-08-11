@@ -109,9 +109,6 @@ export default function Footer() {
         >
           Back To Top ↑
         </FooterToTop>
-        <p>
-          <strong>Brian Suruki</strong>
-        </p>
       </FooterCredits>
     </FooterContainer>
   );

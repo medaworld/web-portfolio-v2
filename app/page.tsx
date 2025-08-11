@@ -5,6 +5,7 @@ import Hero from '../components/Hero/Hero';
 import About from '../components/About/About';
 import Work from '../components/Work/Work';
 import Contact from '../components/Contact/Contact';
+import UnderConstruction from '@/components/UnderConstruction/UnderConstruction';
 
 const MainContainer = styled.main`
   min-height: 100vh;
@@ -29,10 +30,11 @@ const MainContainer = styled.main`
 export default function Home() {
   return (
     <MainContainer id={'top'}>
-      <Hero />
+      <UnderConstruction />
+      {/* <Hero />
       <About />
       <Work />
-      <Contact />
+      <Contact /> */}
     </MainContainer>
   );
 }

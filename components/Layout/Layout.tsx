@@ -31,12 +31,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         ) : (
           <>
             <ToastContainer />
-            <Navbar isHome={isHome} />
+            {/* <Navbar isHome={isHome} /> */}
             <Email isHome={isHome} />
             <Social isHome={isHome} />
             <div id="content">
               {children}
-              <Footer />
+              {/* <Footer /> */}
             </div>
           </>
         )}
