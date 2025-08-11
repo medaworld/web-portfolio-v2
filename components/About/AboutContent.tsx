@@ -13,15 +13,16 @@ export default function AboutContent() {
       <ContentText>
         <ContentParagraph className={roboto.className}>
           <p>
-            Greetings, I&apos;m Brian. My introduction to the world of digital
-            creation began during the nascent days of MySpace, where I was
-            actively creating custom themes. Little did I know, these early
-            endeavors would pave the way for a fulfilling career in web
-            development.
+            Hello, I&apos;m Brian. My passion for digital creation sparked in
+            childhood, fueled by a curiosity to build and design. From
+            experimenting with Photoshop, crafting music in Ableton, to
+            constructing maps for PC games, I&apos;ve always been captivated by
+            the art of creation. This drive naturally evolved into learning the
+            craft of web design.
           </p>
           <p>
             By the year 2020, my initial curiosities had evolved into a
-            deep-rooted passion and proficiency. I mastered foundational web
+            deep-rooted passion and proficiency. I picked up foundational web
             technologies such as <strong>HTML</strong>, <strong>CSS</strong>,
             and <strong>JavaScript</strong>, with a specialized focus on modern
             frameworks like <strong>React</strong> and <strong>NextJS</strong>.
